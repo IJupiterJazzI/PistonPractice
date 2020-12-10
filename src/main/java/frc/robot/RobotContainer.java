@@ -26,7 +26,8 @@ public class RobotContainer {
         // Setting the command for pushing the flipper out when the 
         // driver presses "Y"
         new JoystickButton(controller, Button.kY.value).whenPressed(
-            new PunchOut()
+            //TODO
+            new PunchOut(pneumaticSubsystem)
         );
     }
 

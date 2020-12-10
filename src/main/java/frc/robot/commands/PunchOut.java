@@ -17,11 +17,13 @@ public class PunchOut extends InstantCommand {
 
   // creates an object/instance of the pneumatic subsystem so that we can
   // call methods from that subsystem
-  private PneumaticSubsystem pneumaticSubsystem;
-  
-  public PunchOut() {
+  private final PneumaticSubsystem pneumaticSubsystem;
+  //TODO
+
+  public PunchOut(PneumaticSubsystem punch) {
     // Use addRequirements() here to declare subsystem dependencies.
-    // addRequirements(pneumaticSubsystem);
+    pneumaticSubsystem = punch;
+    addRequirements(punch);
   }
 
   // Called when the command is initially scheduled.
