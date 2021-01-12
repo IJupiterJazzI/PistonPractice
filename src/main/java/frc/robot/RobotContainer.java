@@ -2,6 +2,7 @@ package frc.robot;
 
 import frc.robot.commands.PunchIn;
 import frc.robot.commands.PunchOut;
+import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.PneumaticSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -14,6 +15,7 @@ public class RobotContainer {
 
     // Creates an instance of the pneumatics subsystem
     public static PneumaticSubsystem pneumaticSubsystem = new PneumaticSubsystem();
+    public static CameraSubsystem cameraSubsystem = new CameraSubsystem(); 
 
     // This sets the port number for the Xbox controller to 0
     public static XboxController controller = new XboxController(0);
