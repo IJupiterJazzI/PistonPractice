@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -25,11 +26,15 @@ public class Robot extends TimedRobot {
 
   public static RobotContainer robotContainer;
   private PneumaticSubsystem pneumatics = new PneumaticSubsystem();
+  //TODO
+  public static Compressor compressor;
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  int tempNum = 0;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -39,6 +44,10 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     robotContainer = new RobotContainer();
+    //TODO
+    // sets the compressor object with the proper CAN id
+    compressor = new Compressor(10);
+    compressor.setClosedLoopControl(true);
 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
@@ -56,8 +65,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     Scheduler.getInstance().run();
-    //TODO
-    // Smartdashboard.putNumber("Temp Left F500", robotContainer.driveSubsystem.leftDistanceTravelledInMeters());
+
+
+    if (RobotContainer.controller.getYButtonPressed()) {
+        pneumatics.extend();
+    } else if (RobotContainer.controller.getAButtonPressed()) {
+      pneumatics.retract();
+    }
   }
 
   /**

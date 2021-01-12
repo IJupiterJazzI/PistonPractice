@@ -6,8 +6,7 @@ import frc.robot.RobotMap;
 public class PneumaticSubsystem extends SubsystemBase {
 
     public void initDefaultCommand() {
-        //TODO
-        retract();
+
     }
 
     public boolean isPistonExtended() {

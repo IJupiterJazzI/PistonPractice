@@ -14,19 +14,17 @@ import frc.robot.subsystems.PneumaticSubsystem;
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 public class PunchIn extends InstantCommand {
+  private PneumaticSubsystem pneumaticSubsystem;
   
-  private final PneumaticSubsystem pneumaticSubsystem;
-  //TODO
-  
-  public PunchIn(PneumaticSubsystem punch) {
+  public PunchIn() {
     // Use addRequirements() here to declare subsystem dependencies.
-    pneumaticSubsystem = punch;
-    addRequirements(punch);
+    // pneumatics = pneumaticSubsystem;
+    // addRequirements(pneumatics);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    pneumaticSubsystem.retract();
   }
 }
