@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.LaserSubsystem;
 import frc.robot.subsystems.PneumaticSubsystem;
 
 /**
@@ -65,13 +66,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     Scheduler.getInstance().run();
-
-
     if (RobotContainer.controller.getYButtonPressed()) {
         pneumatics.extend();
     } else if (RobotContainer.controller.getAButtonPressed()) {
       pneumatics.retract();
     }
+    SmartDashboard.putNumber("Laser Distance", robotContainer.laserSubsystem.getLaserDistance());
+    SmartDashboard.putNumber("Laser Voltage", robotContainer.laserSubsystem.getLaserVoltage());
   }
 
   /**

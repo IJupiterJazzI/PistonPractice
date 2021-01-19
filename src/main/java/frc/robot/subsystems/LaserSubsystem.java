@@ -7,19 +7,27 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
-public class CameraSubsystem extends SubsystemBase {
+public class LaserSubsystem extends SubsystemBase {
   /**
-   * Creates a new CameraSubsystem.
+   * Creates a new LaserSubsystem.
    */
-  public CameraSubsystem() {
-    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("driverCam", "/dev/video0");
-    camera.setResolution(480, 360);
-    camera.setFPS(8);
 
+  public LaserSubsystem() {
+
+  }
+
+  public static double getLaserDistance() {
+    double volts = RobotMap.laserVision.getAverageVoltage();
+    double distance = (volts * 28.9) + 2.78;
+    return(distance);
+  }
+
+  public static double getLaserVoltage() {
+    double voltage = RobotMap.laserVision.getAverageVoltage();
+    return(voltage);
   }
 
   @Override

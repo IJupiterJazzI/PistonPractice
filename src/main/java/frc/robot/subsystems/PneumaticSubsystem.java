@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PneumaticSubsystem extends SubsystemBase {
 
@@ -11,6 +12,7 @@ public class PneumaticSubsystem extends SubsystemBase {
 
     public boolean isPistonExtended() {
         boolean value = RobotMap.punchSolenoid.get();
+        SmartDashboard.putBoolean("Is Piston Extended", value);
         return value;
     }
 
